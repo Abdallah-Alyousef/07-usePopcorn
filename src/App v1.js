@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useEffect } from "react";
-import "./index.css";
+
 const tempMovieData = [
   {
     imdbID: "tt1375666",
@@ -47,17 +46,10 @@ const tempWatchedData = [
     userRating: 9,
   },
 ];
-const KEY = "ccd62659";
 
 export default function App() {
-  const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
-
-  useEffect(function () {
-    fetch(`http://www.omdbapi.com/?apikey=${KEY}&s=interstellar`)
-      .then((res) => res.json())
-      .then((data) => setMovies(data.Search));
-  }, []);
+  const [movies, setMovies] = useState(tempMovieData);
+  const [watched, setWatched] = useState(tempWatchedData);
 
   return (
     <>
